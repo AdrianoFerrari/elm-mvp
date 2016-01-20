@@ -1,20 +1,22 @@
-Elm.Native.MyPackage = {};
+Elm.Native.MyPackage = Elm.Native.MyPackage || {};
 Elm.Native.MyPackage.make = function(localRuntime) {
+  localRuntime.Native = localRuntime.Native || {};
+  localRuntime.Native.MyPackage = localRuntime.Native.MyPackage || {};
 
-	localRuntime.Native = localRuntime.Native || {};
-	localRuntime.Native.MyPackage = localRuntime.Native.MyPackage || {};
-	if (localRuntime.Native.MyPackage.values)
-	{
-		return localRuntime.Native.MyPackage.values;
-	}
+  if (localRuntime.Native.MyPackage.values)
+  {
+    return localRuntime.Native.MyPackage.values;
+  }
 
-	function callAlert(string)
+  // Imports
+
+	function yellJS(string)
 	{
-    console.log("from callAlert", string);
-		return "DONE";
+    console.log("From JavaScript: A side effect.");
+    return string.toUpperCase() + "!!";
   }
 
 	return localRuntime.Native.MyPackage.values = {
-		callAlert: callAlert
+		yell: yellJS
 	};
-};
+}

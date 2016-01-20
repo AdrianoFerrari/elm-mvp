@@ -1,8 +1,7 @@
-module MyPackage (callAlert) where
+module MyPackage (toYelling) where
 
-import String
 import Native.MyPackage
 
-callAlert : String -> String
-callAlert msg =
-  Native.MyPackage.callAlert
+toYelling : String -> String
+toYelling msg =
+  Native.MyPackage.yell msg
